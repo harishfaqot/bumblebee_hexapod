@@ -30,31 +30,34 @@ class HexapodEnv(gym.Env):
         self.timestep = 0
 
         # Set up real-time plots with 3 subplots
-        plt.ion() if not is_training else None # Interactive mode ON
-        self.fig, (self.ax1, self.ax2, self.ax3) = plt.subplots(3, 1, figsize=(8, 10))
+        if not is_training
+            plt.ion() # Interactive mode ON
+            self.fig, (self.ax1, self.ax2, self.ax3) = plt.subplots(3, 1, figsize=(8, 10))
 
-        # Reward plot
-        self.line_reward, = self.ax1.plot([], [], 'b-', label="Reward")
-        self.ax1.set_ylabel("Reward")
-        self.ax1.legend()
-        self.ax1.grid(True)
+            # Reward plot
+            self.line_reward, = self.ax1.plot([], [], 'b-', label="Reward")
+            self.ax1.set_ylabel("Reward")
+            self.ax1.legend()
+            self.ax1.grid(True)
 
-        # Roll plot (Fixed Y-axis from -20 to 20)
-        self.line_roll_input, = self.ax2.plot([], [], 'r--', label="Roll Input (deg)")  # Dashed line
-        self.line_roll_robot, = self.ax2.plot([], [], 'r-', label="Roll Robot (deg)")  # Solid line
-        self.ax2.set_ylim(-25, 25)  # FIXED Y-AXIS
-        self.ax2.set_ylabel("Roll (°)")
-        self.ax2.legend()
-        self.ax2.grid(True)
+            # Roll plot (Fixed Y-axis from -20 to 20)
+            self.line_roll_input, = self.ax2.plot([], [], 'r--', label="Roll Input (deg)")  # Dashed line
+            self.line_roll_robot, = self.ax2.plot([], [], 'r-', label="Roll Robot (deg)")  # Solid line
+            self.ax2.set_ylim(-25, 25)  # FIXED Y-AXIS
+            self.ax2.set_ylabel("Roll (°)")
+            self.ax2.legend()
+            self.ax2.grid(True)
 
-        # Pitch plot (Fixed Y-axis from -20 to 20)
-        self.line_pitch_input, = self.ax3.plot([], [], 'g--', label="Pitch Input (deg)")  # Dashed line
-        self.line_pitch_robot, = self.ax3.plot([], [], 'g-', label="Pitch Robot (deg)")  # Solid line
-        self.ax3.set_ylim(-25, 25)  # FIXED Y-AXIS
-        self.ax3.set_xlabel("Timestep")
-        self.ax3.set_ylabel("Pitch (°)")
-        self.ax3.legend()
-        self.ax3.grid(True)
+            # Pitch plot (Fixed Y-axis from -20 to 20)
+            self.line_pitch_input, = self.ax3.plot([], [], 'g--', label="Pitch Input (deg)")  # Dashed line
+            self.line_pitch_robot, = self.ax3.plot([], [], 'g-', label="Pitch Robot (deg)")  # Solid line
+            self.ax3.set_ylim(-25, 25)  # FIXED Y-AXIS
+            self.ax3.set_xlabel("Timestep")
+            self.ax3.set_ylabel("Pitch (°)")
+            self.ax3.legend()
+            self.ax3.grid(True)
+        else:
+            print("Using Training Mode!")
         
         super(HexapodEnv, self).__init__()
 
