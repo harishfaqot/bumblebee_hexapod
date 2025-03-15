@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 HOME_POSITION = [0, 0, 0.1]
 TARGET_POSITION = [-1, 1, 0.1]
-is_training = False
+is_training = True
 
 class HexapodEnv(gym.Env):
     def __init__(self):
