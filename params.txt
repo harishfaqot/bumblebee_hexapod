@@ -1,0 +1,20 @@
+"Body Movement": {
+    "vx": 0.3,
+    "vy": 0.0,
+    "v_rot": 0.0
+},
+"Movement parameters": {
+    "step_height": 0.05,
+    "step_duration": 1.5,
+    "gait": "2"
+},
+"Body Position": {
+    "pos_x": 0.0,
+    "pos_y": 0.0,
+    "pos_z": 0.1
+},
+"Body Rotation": {
+    "roll": 0,
+    "pitch": 0,
+    "yaw": 0
+}
